@@ -1,0 +1,1079 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": "",
+    "termsOfService": "https://portfolio-ehkarabas.netlify.app/",
+    "contact": {
+      "name": "Huseyin Karabas",
+      "email": "ehkarabas@gmail.com"
+    },
+    "license": {
+      "name": "ISC"
+    }
+  },
+  "host": "127.0.0.1:8000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "Token": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "Classic Token Authentication * Example: <b>Token ...tokenKey...</b>"
+    }
+  },
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Login - <Permission: Public>",
+        "description": "Login with username and password",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "testf0@site.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Qwer1234!"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Logout - <Permission: Public>",
+        "description": "Delete Token",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/departments/{departmentId}/personnels": {
+      "get": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "List Department Personnels - <Permission: Admin | Lead>",
+        "description": "\r  You can send query with endpoint for filter[], search[], sort[], page and limit.\r  <ul> Examples:\r  <li>URL/?<b>filter[field1]=value1&filter[field2]=value2</b></li>\r  <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r  <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r  <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
+        "parameters": [
+          {
+            "name": "departmentId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/departments/{departmentId}": {
+      "get": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "Get Single Department - <Permission: Login>",
+        "description": "",
+        "parameters": [
+          {
+            "name": "departmentId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "Update Department - <Permission: Admin>",
+        "description": "",
+        "parameters": [
+          {
+            "name": "departmentId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Test DepartmentUPDATE"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "Delete Department - <Permission: Admin>",
+        "description": "",
+        "parameters": [
+          {
+            "name": "departmentId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "Update Department - <Permission: Admin>",
+        "description": "",
+        "parameters": [
+          {
+            "name": "departmentId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Test DepartmentUPDATE"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        }
+      }
+    },
+    "/departments/": {
+      "get": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "List Departments - <Permission: Login>",
+        "description": "\r  You can send query with endpoint for filter[], search[], sort[], page and limit.\r  <ul> Examples:\r  <li>URL/?<b>filter[field1]=value1&filter[field2]=value2</b></li>\r  <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r  <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r  <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "Create Department - <Permission: Admin>",
+        "description": "",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Test Department"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/personnels/{personnelId}": {
+      "get": {
+        "tags": [
+          "Personnels"
+        ],
+        "summary": "Get Single Personnel - <Permission: Admin | Lead | Own>",
+        "description": "",
+        "parameters": [
+          {
+            "name": "personnelId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Personnels"
+        ],
+        "summary": "Update Personnel - <Permission: Admin | Own>",
+        "description": "",
+        "parameters": [
+          {
+            "name": "personnelId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "newtestdept0@site.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Qwer4321!"
+                },
+                "username": {
+                  "type": "string",
+                  "example": "newusername"
+                },
+                "firstName": {
+                  "type": "string",
+                  "example": "newJohn"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "newDoe"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "987654321"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "newJobTitle"
+                },
+                "salary": {
+                  "type": "number",
+                  "example": 3500
+                },
+                "description": {
+                  "type": "string",
+                  "example": "newdescription"
+                },
+                "isActive": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "isAdmin": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "isLead": {
+                  "type": "boolean",
+                  "example": false
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Personnels"
+        ],
+        "summary": "Delete Personnel - <Permission: Admin>",
+        "description": "",
+        "parameters": [
+          {
+            "name": "personnelId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Personnels"
+        ],
+        "summary": "Update Personnel - <Permission: Admin | Own>",
+        "description": "",
+        "parameters": [
+          {
+            "name": "personnelId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "newtestdept0@site.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Qwer4321!"
+                },
+                "username": {
+                  "type": "string",
+                  "example": "newusername"
+                },
+                "firstName": {
+                  "type": "string",
+                  "example": "newJohn"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "newDoe"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "987654321"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "newJobTitle"
+                },
+                "salary": {
+                  "type": "number",
+                  "example": 3500
+                },
+                "description": {
+                  "type": "string",
+                  "example": "newdescription"
+                },
+                "isActive": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "isAdmin": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "isLead": {
+                  "type": "boolean",
+                  "example": false
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        }
+      }
+    },
+    "/personnels/": {
+      "get": {
+        "tags": [
+          "Personnels"
+        ],
+        "summary": "List Personnels - <Permission: Admin>",
+        "description": "\r  You can send query with endpoint for filter[], search[], sort[], page and limit.\r  <ul> Examples:\r  <li>URL/?<b>filter[field1]=value1&filter[field2]=value2</b></li>\r  <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r  <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r  <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Personnels"
+        ],
+        "summary": "Create Personnel - <Permission: Admin>",
+        "description": "",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "testdept0@site.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Qwer1234!"
+                },
+                "username": {
+                  "type": "string",
+                  "example": "username"
+                },
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "123456789"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "jobTitle"
+                },
+                "salary": {
+                  "type": "number",
+                  "example": 2500
+                },
+                "description": {
+                  "type": "string",
+                  "example": "description"
+                },
+                "isActive": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "isAdmin": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "isLead": {
+                  "type": "boolean",
+                  "example": false
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "/auth/login": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "example": "String"
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "password": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "example": "String"
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        }
+      }
+    },
+    "/auth/refresh": {
+      "type": "object",
+      "properties": {
+        "token.refresh": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string",
+              "example": "{ token: { refresh: ... } }"
+            },
+            "type": {
+              "type": "string",
+              "example": "String"
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        }
+      }
+    },
+    "Department": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        }
+      }
+    },
+    "Personnel": {
+      "type": "object",
+      "properties": {
+        "departmentId": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "ref": {
+              "type": "string",
+              "example": "Department"
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "email": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "array",
+              "example": [
+                true,
+                "Email field is required"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "unique": {
+              "type": "boolean",
+              "example": true
+            },
+            "validate": {
+              "type": "array",
+              "example": [
+                null
+              ],
+              "items": {
+                "type": "function"
+              }
+            }
+          }
+        },
+        "password": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "firstName": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "lastName": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "phone": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "title": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "salary": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "default": {
+              "type": "number",
+              "example": 0
+            }
+          }
+        },
+        "description": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "default": {}
+          }
+        },
+        "username": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
+            },
+            "unique": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "isActive": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "default": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "isAdmin": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "default": {
+              "type": "boolean",
+              "example": false
+            }
+          }
+        },
+        "isLead": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "default": {
+              "type": "boolean",
+              "example": false
+            }
+          }
+        },
+        "startedAt": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "default": {
+              "type": "number",
+              "example": 1711147591229
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "Token": []
+    }
+  ]
+}
