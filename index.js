@@ -28,7 +28,7 @@ const PORT = process.env?.PORT || 8000;
 // app.use(logger);
 
 // ? morgan local logger
-app.use(require("./src/middlewares/morganLogging"));
+// app.use(require("./src/middlewares/morganLogging"));
 
 // ? SWAGGER JSON
 // https://expressjs.com/en/5x/api.html#res.sendFile
