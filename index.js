@@ -50,10 +50,8 @@ app.use(
   "/documents/swagger",
   swaggerUi.serve,
   swaggerUi.setup(require("./swagger.json"), {
-    swaggerOptions: {
-      persistAuthorization: true,
-      customCssUrl: SWAGGER_CSS_CDN_URL,
-    },
+    persistAuthorization: true,
+    customCssUrl: SWAGGER_CSS_CDN_URL,
   })
 );
 
