@@ -14,9 +14,12 @@ router.use("/personnels", require("./personnelRoute"));
 // token routes
 router.use("/tokens", require("./tokenRoute"));
 
-// * for vercel deploy:
+// * for deploy:
 // Check functionality of userCheck middleware on root
 router.all("/", (req, res) => {
+  const scheme = req.headers["x-forwarded-proto"] || "http";
+  const host = req.headers.host;
+  const basePath = `${scheme}://${host}`;
   res.json({
     error: false,
     message: "WELCOME PERSONNEL API PROJECT",
@@ -27,10 +30,9 @@ router.all("/", (req, res) => {
     user: req.user,
     api: {
       documents: {
-        swagger:
-          "https://personnel-api-ehkarabas.onrender.com/documents/swagger",
-        redoc: "https://personnel-api-ehkarabas.onrender.com/documents/redoc",
-        json: "https://personnel-api-ehkarabas.onrender.com/documents/json",
+        swagger: `${basePath}/documents/swagger`,
+        redoc: `${basePath}/documents/redoc`,
+        json: `${basePath}/documents/json`,
       },
     },
   });
