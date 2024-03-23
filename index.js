@@ -15,6 +15,9 @@ const redoc = require("redoc-express");
 const cors = require("cors");
 const HOST = process.env?.HOST || "cloud.mongodb.com";
 const PORT = process.env?.PORT || 8000;
+// * cdn css for vercel deploy
+const SWAGGER_CSS_CDN_URL =
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.6.2/swagger-ui.min.css";
 
 /* ------------------------------------------------------------------ */
 
@@ -42,11 +45,15 @@ const PORT = process.env?.PORT || 8000;
 app.use("/documents/json", express.static("./swagger.json"));
 
 // ? SWAGGER
+// * cdn css for vercel deploy
 app.use(
   "/documents/swagger",
   swaggerUi.serve,
   swaggerUi.setup(require("./swagger.json"), {
-    swaggerOptions: { persistAuthorization: true },
+    swaggerOptions: {
+      persistAuthorization: true,
+      customCssUrl: SWAGGER_CSS_CDN_URL,
+    },
   })
 );
 
