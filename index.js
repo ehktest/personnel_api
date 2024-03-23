@@ -17,7 +17,7 @@ const HOST = process.env?.HOST || "cloud.mongodb.com";
 const PORT = process.env?.PORT || 8000;
 // * cdn css for vercel deploy
 const SWAGGER_CSS_CDN_URL =
-  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.min.css";
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.6.2/swagger-ui.min.css";
 
 /* ------------------------------------------------------------------ */
 
@@ -51,6 +51,8 @@ app.use(
   swaggerUi.serve,
   swaggerUi.setup(require("./swagger.json"), {
     persistAuthorization: true,
+    customCss:
+      ".swagger-ui .opblock .opblock-summary-path-description-wrapper { align-items: center; display: flex; flex-wrap: wrap; gap: 0 10px; padding: 0 10px; width: 100%; }",
     customCssUrl: SWAGGER_CSS_CDN_URL,
   })
 );
