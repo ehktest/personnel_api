@@ -13,7 +13,7 @@
       "name": "ISC"
     }
   },
-  "host": "https://personnel-api-ehkarabas.vercel.app/",
+  "host": "127.0.0.1:8000",
   "basePath": "/",
   "schemes": [
     "http",
@@ -1064,7 +1064,7 @@
             },
             "default": {
               "type": "number",
-              "example": 1711184291108
+              "example": 1711185203119
             }
           }
         }
