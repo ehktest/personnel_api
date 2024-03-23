@@ -27,8 +27,9 @@ const PORT = process.env?.PORT || 8000;
 // nodejs local logger
 // app.use(logger);
 
+// * for vercel deploy:
 // ? morgan local logger
-app.use(require("./src/middlewares/morganLogging"));
+// app.use(require("./src/middlewares/morganLogging"));
 
 // ? SWAGGER JSON
 // https://expressjs.com/en/5x/api.html#res.sendFile

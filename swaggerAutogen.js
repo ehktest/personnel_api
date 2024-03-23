@@ -4,8 +4,10 @@
     EXPRESS - Swagger JSON
 ------------------------------------------------------- */
 require("dotenv").config();
-const HOST = process.env?.HOST || "127.0.0.1";
-const PORT = process.env?.PORT || 8000;
+// const HOST = process.env?.HOST || "127.0.0.1";
+// * for vercel deploy:
+const HOST = process.env?.HOST || "https://personnel-api-ehkarabas.vercel.app/";
+// const PORT = process.env?.PORT || 8000;
 /* ------------------------------------------------------- */
 // npm i swagger-autogen
 // https://swagger-autogen.github.io/docs/
@@ -42,7 +44,7 @@ const document = {
     contact: { name: packageJson.author, email: "ehkarabas@gmail.com" },
     license: { name: packageJson.license },
   },
-  host: `${HOST}:${PORT}`,
+  host: `${HOST}`,
   basePath: "/",
   schemes: ["http", "https"],
   // JWT/Token Settings:

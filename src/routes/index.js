@@ -14,6 +14,7 @@ router.use("/personnels", require("./personnelRoute"));
 // token routes
 router.use("/tokens", require("./tokenRoute"));
 
+// * for vercel deploy:
 // Check functionality of userCheck middleware on root
 router.all("/", (req, res) => {
   res.json({
@@ -26,9 +27,9 @@ router.all("/", (req, res) => {
     user: req.user,
     api: {
       documents: {
-        swagger: "http://127.0.0.1:8000/documents/swagger",
-        redoc: "http://127.0.0.1:8000/documents/redoc",
-        json: "http://127.0.0.1:8000/documents/json",
+        swagger: "https://personnel-api-ehkarabas.vercel.app/documents/swagger",
+        redoc: "https://personnel-api-ehkarabas.vercel.app/documents/redoc",
+        json: "https://personnel-api-ehkarabas.vercel.app/documents/json",
       },
     },
   });
