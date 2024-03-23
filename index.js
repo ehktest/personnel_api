@@ -17,7 +17,7 @@ const HOST = process.env?.HOST || "cloud.mongodb.com";
 const PORT = process.env?.PORT || 8000;
 // * cdn css for vercel deploy
 const SWAGGER_CSS_CDN_URL =
-  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.6.2/swagger-ui.min.css";
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.min.css";
 
 /* ------------------------------------------------------------------ */
 
