@@ -27,9 +27,10 @@ router.all("/", (req, res) => {
     user: req.user,
     api: {
       documents: {
-        swagger: "https://personnel-api-ehkarabas.vercel.app/documents/swagger",
-        redoc: "https://personnel-api-ehkarabas.vercel.app/documents/redoc",
-        json: "https://personnel-api-ehkarabas.vercel.app/documents/json",
+        swagger:
+          "https://personnel-api-ehkarabas.onrender.com/documents/swagger",
+        redoc: "https://personnel-api-ehkarabas.onrender.com/documents/redoc",
+        json: "https://personnel-api-ehkarabas.onrender.com/documents/json",
       },
     },
   });
