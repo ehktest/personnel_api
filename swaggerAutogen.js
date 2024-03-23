@@ -36,10 +36,14 @@ const document = {
   // },
   info: {
     version: packageJson.version,
-    title: packageJson.title,
+    title: packageJson.title || "Personnel API",
     description: packageJson.description,
     termsOfService: "https://portfolio-ehkarabas.netlify.app/",
-    contact: { name: packageJson.author, email: "ehkarabas@gmail.com" },
+    contact: {
+      name: packageJson.author,
+      email: "ehkarabas@gmail.com",
+      url: "https://portfolio-ehkarabas.netlify.app/",
+    },
     license: { name: packageJson.license },
   },
   host: `${HOST}:${PORT}`,
