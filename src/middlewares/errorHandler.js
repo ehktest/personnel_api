@@ -8,20 +8,20 @@ module.exports = (err, req, res, next) => {
   // print error on server console
   console.error(`Error : ${(err?.stack ?? err?.cause ?? err?.message) || err}`);
   // logging error on local
-  const origin = req.headers.origin ?? "localhost";
-  const now = new Date();
-  // console.log(typeof now, now); // object 2024-03-21T19:52:51.712Z
-  const today = now.toISOString().split("T")[0];
-  // console.log(typeof today, today); // string 2024-03-21
-  logEvents(
-    `ERROR -> ${formatErrorStack(err)}\t| METHOD -> ${
-      req.method
-    }\t| ORIGIN -> ${origin}\t| URL ->${req.url}\t| USER -> ${
-      // }\t| URL ->${req.url}\t| USER -> ${req.user?.email}\t| TOKEN -> ${
-      req.headers.authorization
-    }`,
-    `ERRORS_${today}.txt`
-  );
+  // const origin = req.headers.origin ?? "localhost";
+  // const now = new Date();
+  // // console.log(typeof now, now); // object 2024-03-21T19:52:51.712Z
+  // const today = now.toISOString().split("T")[0];
+  // // console.log(typeof today, today); // string 2024-03-21
+  // logEvents(
+  //   `ERROR -> ${formatErrorStack(err)}\t| METHOD -> ${
+  //     req.method
+  //   }\t| ORIGIN -> ${origin}\t| URL ->${req.url}\t| USER -> ${
+  //     // }\t| URL ->${req.url}\t| USER -> ${req.user?.email}\t| TOKEN -> ${
+  //     req.headers.authorization
+  //   }`,
+  //   `ERRORS_${today}.txt`
+  // );
   res
     .status(errorStatusCode) // 500 Internal Server Error
     .send({
