@@ -2,12 +2,13 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "REST API",
+    "title": "Personnel API",
     "description": "",
     "termsOfService": "https://portfolio-ehkarabas.netlify.app/",
     "contact": {
       "name": "Huseyin Karabas",
-      "email": "ehkarabas@gmail.com"
+      "email": "ehkarabas@gmail.com",
+      "url": "https://portfolio-ehkarabas.netlify.app/"
     },
     "license": {
       "name": "ISC"
@@ -1064,7 +1065,7 @@
             },
             "default": {
               "type": "number",
-              "example": 1711185203119
+              "example": 1711186109104
             }
           }
         }
